@@ -15,6 +15,9 @@
 #define SHELL_COMMAND_SUM_MAX 3
 #define SHEll_COMMAND_CLEAR_SCREEN 4
 #define SHELL_UNRECOGNIZED_COMMAND 5
+#define SHELL_COMMAND_DEFAULT_DISPLAY 6
+
+#define SHELL_VIEW_DEFAULT_DISPLAY "DEFAULT_DISPLAY"
 
 typedef struct ShellCommandManager ShellCommandManager_t;
 

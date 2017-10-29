@@ -66,13 +66,6 @@ int ShellViewController_Control(ShellViewController_t* this, ShellData_t* shellD
 		return -1;
 	}
 
-
-	if ( strcmp( SHELL_VIEW_CONTROLLER_DEFAULT_DISPLAY, dataToDisplay) == 0  )
-	{
-		this->shellView->display(this->shellView, shellData, "");
-		return 0;
-	}
-
 	int *inputMatrixOne[MATRIX_MAX_SIZE];
 	int *inputMatrixTwo[MATRIX_MAX_SIZE];
 	int outputMatrix[MATRIX_MAX_SIZE];
@@ -81,6 +74,9 @@ int ShellViewController_Control(ShellViewController_t* this, ShellData_t* shellD
 	// Check input
 	switch ( this->shellCommandManager->manage(this->shellCommandManager, shellData, (const char*) dataToDisplay) )
 	{
+		case SHELL_COMMAND_DEFAULT_DISPLAY:
+			this->shellView->display(this->shellView, shellData, "");
+			break;
 		case SHELL_COMMAND_USER_CURRENT_WORKING_DIR:
 			this->shellView->displayUserInput(this->shellView, shellData->userCurrentWorkingDirectory);
 			break;
@@ -123,7 +119,7 @@ int ShellViewController_Control(ShellViewController_t* this, ShellData_t* shellD
 			break;
 		case SHELL_UNRECOGNIZED_COMMAND:
 			this->shellView->displayUserInput(this->shellView, "Unrecognized command");
-			break;
+			return SHELL_VIEW_UNRECOGNIZED_COMMAND;
 		case SHELL_COMMAND_EXIT:
 			return SHELL_VIEW_EXIT;
 

@@ -14,6 +14,7 @@
 
 #define SHELL_VIEW_CONTROLLER_DEFAULT_DISPLAY "DEFAULT_DISPLAY"
 #define SHELL_VIEW_EXIT -2
+#define SHELL_VIEW_UNRECOGNIZED_COMMAND -3
 
 typedef struct ShellViewController ShellViewController_t;
 
